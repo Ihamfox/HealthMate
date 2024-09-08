@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %} Register {% endblock %}
+{% block main %} 
+<main class="container py-5 text-center">
+    <form action="/register" method="post">
+        <div class="mb-1">
+            <p class="Error">{{error}}</p>
+        </div>
+        <div class="mb-3">
+            <label class="m-2" for="Username">Enter your Username :</label>
+            <input class="form-control mx-auto w-auto" type="text" name="username" placeholder="Username ..." autocomplete="off" id="Username" autofocus>
+        </div>
+        <div class="mb-3">
+            <label class="m-2" for="Password"> Enter your Password :</label>
+            <input class="form-control mx-auto w-auto" type="password" name="password" placeholder="Password ..." id="Password">
+        </div>
+        <div class="mb-3">
+            <label class="m-2" for="Confirmation"> Confirm your Password :</label>
+            <input class="form-control mx-auto w-auto" type="password" name="confirmation" placeholder="Password Confirmation ..." id="Confirmation">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+</main>
+{% endblock %}

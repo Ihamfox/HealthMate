@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %} BMI Calculator {% endblock %}
+{% block main %}
+<p class="headertext">BMI Calculator</p>
+<main class="py-5 text-center">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <p>What is BMI ?</p>
+            <p style="text-align: left !important;">BMI is a measurement of a person's leanness or corpulence based on their height and weight, and is intended to quantify tissue mass. It is widely used as a general indicator of whether a person has a healthy body weight for their height. Specifically, the value obtained from the calculation of BMI is used to categorize whether a person is underweight, normal weight, overweight, or obese depending on what range the value falls between. These ranges of BMI vary based on factors such as region and age, and are sometimes further divided into subcategories such as severely underweight or very severely obese. Being overweight or underweight can have significant health effects, so while BMI is an imperfect measure of healthy body weight, it is a useful indicator of whether any additional testing or action is required. Refer to the table below to see the different categories based on BMI that are used by the calculator.</p>
+          </div>
+          <div class="col-sm">
+            <form action="/bmi" method="post">
+                <div class="mb-3">
+                    <label class="m-2" for="Age">Enter your Age :</label>
+                    <input class="form-control mx-auto text-center" type="number" name="age" placeholder="Age (2 - 120)" autocomplete="off" id="Age" min="2" max="120">
+                </div>
+                <div class="mb-3">
+                    <p>Gender :</p>
+                    <input class="custom-control-input" type="radio" name="gender"  id="Male" checked>
+                    <label class="m-2" for="Male">Male</label>
+                    <input class="custom-control-input" type="radio" name="gender"  id="Female">
+                    <label class="m-2" for="Gender">Female</label>
+                </div>
+                <div class="mb-3">
+                    <label class="m-2" for="Height"> Enter your Height :</label>
+                    <input class="form-control mx-auto text-center" type="number" name="height" placeholder="Height in meters ..." id="Height" min="0.8" max="2.5" step="0.01">
+                </div>
+                <div class="mb-3">
+                    <label class="m-2" for="Weight"> Enter your Weight :</label>
+                    <input class="form-control mx-auto text-center" type="number" name="weight" placeholder="Weight in kg" id="Weight" min="8" max="600" step="0.1">
+                </div>
+                <button class="btn btn-primary" type="submit">Calculate</button>
+            </form>
+          </div>
+          <div class="col-sm">
+            <p class="tt">{{tt}}</p>
+            <p class="tt bmi">{{urBMI}}</p>
+            <p class="tt">{{status}}</p>
+            <table class="table table-striped table-dark" align="center">
+                <tr><td class="col">Classification</td><td class="col">BMI range - kg/m<sup>2</sup></td></tr>
+                <tr><td>Severe Thinness</td><td align="center">&lt; 16</td></tr>
+                <tr><td>Moderate Thinness</td><td align="center">16 - 17</td></tr>
+                <tr><td>Mild Thinness</td><td align="center">17 - 18.5</td></tr>
+                <tr><td>Normal</td><td align="center">18.5 - 25</td></tr>
+                <tr><td>Overweight</td><td align="center">25 - 30</td></tr>
+                <tr><td>Obese Class I</td><td align="center">30 - 35</td></tr>
+                <tr><td>Obese Class II</td><td align="center">35 - 40</td></tr>
+                <tr><td>Obese Class III</td><td align="center">&gt; 40</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+</main>
+{% endblock %}

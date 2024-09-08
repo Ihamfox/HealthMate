@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block title %} Home {% endblock %}
+{% block main %}
+<p class="headertext">Welcome {{username}} !</p>
+<main class="py-5 text-center">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <p>Keep track of your BMI over time by saving it here : </p>
+            <div class="reg_bg">
+              <div>
+                <form action="/bmisub" method="post">
+                    <input type="number" name="bmi" min="0" step="0.1" placeholder="BMI ..." required>
+                    <input type="date" name="date" required>
+                    <input type="submit" value="Save">
+                </form>
+              </div>
+              <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">BMI</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data1 %}
+                        <tr>
+                            <td>{{ row["bmi"] }}</td>
+                            <td>{{ row["date"] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+
+          </div>
+          <div class="col-sm">
+            <p>Keep track of your BMR here : </p>
+            <div class="reg_bg">
+              <div>
+                <form action="/bmrsub" method="post">
+                  <input type="number" name="bmr" min="0" step="0.1" placeholder="BMR in Calories ..." required>
+                  <input type="date" name="date" required>
+                  <button type="submit">Save</button>
+                </form>
+              </div>
+              <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">BMR</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data2 %}
+                        <tr>
+                            <td>{{ row["bmr"] }}</td>
+                            <td>{{ row["date"] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+          </div>
+          <div class="col-sm">
+            <p>Keep track of your Weight here : </p>
+            <div class="reg_bg">
+              <div>
+                <form action="/weightsub" method="post">
+                  <input type="number" name="weight" min="10" step="0.01" placeholder="Weight in Kg ..." required>
+                  <input type="date" name="date" required>
+                  <button type="submit">Save</button>
+                </form>
+              </div>
+              <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Weight</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data3 %}
+                        <tr>
+                            <td>{{ row["weight"] }}</td>
+                            <td>{{ row["date"] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+      </div>
+</main>
+{% endblock %}

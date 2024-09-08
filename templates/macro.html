@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block title %} Macronutrients Calculator {% endblock %}
+{% block main %}
+<p class="headertext">Macronutrients Calculator</p>
+<main class="py-5 text-center">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <p>Macronutrients (Macros) :</p>
+            <p style="text-align: left !important;">Macronutrients are the main nutrients that provide energy in large amounts: carbohydrates, proteins, and fats. This calculator focuses on daily needs for carbs, protein, and fat.</p>
+            <ul>
+                <li>Proteins: Made of amino acids, essential for health. Sources include meat, dairy, beans, and nuts. Choose healthier options like fish and lean meats over processed ones.</li>
+                <li>Carbohydrates: Include sugars, starches, and fibers. Simple carbs (sugars) and complex carbs (fiber-rich foods like vegetables and whole grains) affect energy and health differently.</li>
+                <li>Fats: Provide energy and have various types, including saturated, unsaturated, and omega-3 fats. Aim to limit saturated and trans fats, and focus on healthier fats like monounsaturated and polyunsaturated fats.</li>
+            </ul>
+          </div>
+          <div class="col-sm">
+            <form action="/macro" method="post">
+                <div class="mb-3">
+                    <label class="m-2" for="Age">Enter your Age :</label>
+                    <input class="form-control mx-auto text-center" type="number" name="age" placeholder="Age (2 - 120)" autocomplete="off" id="Age" min="2" max="120">
+                </div>
+                <div class="mb-3">
+                    <p>Gender :</p>
+                    <input class="custom-control-input" type="radio" name="gender" value="male"  id="Male" checked>
+                    <label class="m-2" for="Male">Male</label>
+                    <input class="custom-control-input" type="radio" name="gender" value="female"  id="Female">
+                    <label class="m-2" for="Gender">Female</label>
+                </div>
+                <div class="mb-3">
+                    <label class="m-2" for="Height"> Enter your Height :</label>
+                    <input class="form-control mx-auto text-center" type="number" name="height" placeholder="Height in meters ..." id="Height" min="0.8" max="2.5" step="0.01">
+                </div>
+                <div class="mb-3">
+                    <label class="m-2" for="Weight"> Enter your Weight :</label>
+                    <input class="form-control mx-auto text-center" type="number" name="weight" placeholder="Weight in kg" id="Weight" min="8" max="600" step="0.1">
+                </div>
+                <div class="mb-3">
+                    <label for="activity">Activity Level : </label>
+                    <select id="activity" name="activity">
+                        <option value="nex">Little to no exercise</option>
+                        <option value="oex">Exercise 1 to 3 times/week</option>
+                        <option value="fex">Exercise 4 to 6 times/week</option>
+                        <option value="dex">Daily Exercise</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" type="submit">Calculate</button>
+            </form>
+          </div>
+          <div class="col-sm">
+            <p class="tt">Result : </p>
+            <table class="table table-striped table-dark" align="center">
+                <tr><td class="col">Macronutrient</td><td class="col">Grams/Day</td></tr>
+                <tr><td>Protein</td><td align="center">{{protein}}</td></tr>
+                <tr><td>Carbs</td><td align="center">{{carbs}}</td></tr>
+                <tr><td>Fats</td><td align="center">{{fats}}</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+</main>
+{% endblock %}
